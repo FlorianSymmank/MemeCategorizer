@@ -3,13 +3,12 @@ import re
 
 from PIL import Image
 
-preprocessed_dir = "F:\VisualStudioProjekte\MemeCategorizer\preprocessed"
-meme_dir = r"F:\Wichtige Dokumente\Box Sync\Memes"
+import config
 
 # find all non preprocessed images
-files_processed = os.listdir(preprocessed_dir)
+files_processed = os.listdir(config.processed_meme_dir)
 files = [f for f in os.listdir(
-    meme_dir) if re.search(r'.*\.(jpg|webp|png)', f) and 
+    config.meme_dir) if re.search(r'.*\.(jpg|webp|png)', f) and 
     os.path.splitext(f)[0] + ".tiff" not in files_processed]
 
 # could be a lengthy operation some feedback
@@ -22,10 +21,10 @@ for file in files:
 
     # new filename
     filename, file_extension = os.path.splitext(file)
-    tiff = os.path.join(preprocessed_dir, filename) + ".tiff"
+    tiff = os.path.join(config.processed_meme_dir, filename) + ".tiff"
 
     # convert
-    path = os.path.join(meme_dir, file)
+    path = os.path.join(config.meme_dir, file)
     im = Image.open(path)
     im.save(tiff, 'TIFF')
 
