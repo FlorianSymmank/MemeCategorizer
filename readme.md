@@ -10,10 +10,16 @@ meme_dir = r"\Memes" # your meme dir
 tesseract_cmd = "tesseract.exe" # tesseract executable
 ```
 
-## How to run
+## How to extract data
 
-```
+``` bash
 python preprocess_images.py
 python text_extraction.py
 python image_classifier.py
 ```
+
+## How to find
+``` bash
+python find.py <replace_with_your_searchstring> # can be regeex  
+```
+
