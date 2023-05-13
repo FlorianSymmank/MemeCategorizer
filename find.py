@@ -11,8 +11,7 @@ def build_filename_map(directory):
     for filename in os.listdir(directory):
         file_path = os.path.join(directory, filename)
         if os.path.isfile(file_path):
-            file_name_without_ext = os.path.splitext(filename)[0]
-            filename_map[file_name_without_ext] = file_path
+            filename_map[os.path.splitext(filename)[0]] = file_path
     return filename_map
 
 parser = argparse.ArgumentParser(description='Meme Searcher')
