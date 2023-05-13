@@ -1,36 +1,20 @@
 import json
 import os
-import re
 
 import pytesseract
 from PIL import Image
 
+import config
+from persistance import load_data, save_data
+
 # Defining paths to tesseract.exe
-pytesseract.pytesseract.tesseract_cmd = 'C:\\Program Files\\Tesseract-OCR\\tesseract.exe'
-
-meme_dir = r"F:\VisualStudioProjekte\MemeCategorizer\preprocessed"
-data_dir = f"F:\VisualStudioProjekte\MemeCategorizer\data"
-
-
-def load_data(id):
-    file_path = os.path.join(data_dir, id) + ".json"
-    if os.path.isfile(file_path):
-        f = open(file_path)
-        return json.load(f)
-    else:
-        return {"id": id}
-
-
-def save_data(data):
-    path = f"{os.path.join(data_dir, data['id'])}.json"
-    with open(path, 'w') as f:
-        json.dump(data, f, indent=4, sort_keys=True)
+pytesseract.pytesseract.tesseract_cmd = config.tesseract_cmd
 
 
 def main():
 
     # find all non text extracted images
-    data_files = os.listdir(meme_dir)
+    data_files = os.listdir(config.processed_meme_dir)
     files_text_missing = [load_data(os.path.splitext(file)[
                                     0]) for file in data_files if "text" not in load_data(os.path.splitext(file)[0])]
 
@@ -42,7 +26,7 @@ def main():
 
     for data in files_text_missing:
         file = data["id"] + ".tiff"
-        path = os.path.join(meme_dir, file)
+        path = os.path.join(config.processed_meme_dir, file)
         img = Image.open(path)
         text = pytesseract.image_to_string(img)
 
@@ -61,6 +45,7 @@ def main():
         f_count = f_count + 1
 
     print("Done")
+
 
 if __name__ == "__main__":
     main()
