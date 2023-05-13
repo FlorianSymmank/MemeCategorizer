@@ -3,7 +3,7 @@ Extract some data from saved memes.
 
 ## Create config
 rename config_template.py to config.py and change paths to your needs   
-```
+``` python
 processed_meme_dir = r"\preprocessed"
 data_dir = f"\data"
 meme_dir = r"\Memes" # your meme dir
