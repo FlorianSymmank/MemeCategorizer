@@ -2,6 +2,14 @@ import json
 import os
 import config
 
+
+def load_all():
+    data = []
+    for file in [f for f in os.listdir(config.data_dir) if os.path.isfile(os.path.join(config.data_dir, f))]:
+        data.append(load_data(os.path.splitext(file)[0]))
+    return data
+
+
 def load_data(id):
     file_path = os.path.join(config.data_dir, id) + ".json"
     if os.path.isfile(file_path):
