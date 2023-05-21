@@ -56,7 +56,8 @@ def main():
             next_info += info_increment
 
         f_count = f_count + 1
-
+    
+    print("Done")
 
 if __name__ == "__main__":
     main()

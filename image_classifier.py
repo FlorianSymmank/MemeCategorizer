@@ -40,6 +40,10 @@ def main():
     files_tags_missing = [load_data(os.path.splitext(file)[
                                     0]) for file in data_files if "tags" not in load_data(os.path.splitext(file)[0])]
 
+    if len(files_tags_missing) == 0:
+        print("Done")
+        return
+
     batches = subbatches(files_tags_missing)
 
     # could be a lengthy operation some feedback
