@@ -16,6 +16,7 @@ tesseract_cmd = "tesseract.exe" # tesseract executable
 python preprocess_images.py
 python text_extraction.py
 python image_classifier.py
+python object_detection.py
 ```
 
 ## How to find
