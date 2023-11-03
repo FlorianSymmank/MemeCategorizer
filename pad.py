@@ -21,7 +21,7 @@ def main():
     for data in missing:
         file = data["id"] + ".tiff"
         path = os.path.join(config.processed_meme_dir, file)
-        # tiff_padded_mean = os.path.join(config.padded_meme_dir, f"mean_{file}")
+        tiff_padded_mean = os.path.join(config.padded_meme_dir, f"mean_{file}")
         tiff_padded = os.path.join(config.padded_meme_dir, f"median_{file}")
 
         size = (400, 400)
