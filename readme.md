@@ -21,6 +21,6 @@ python object_detection.py
 
 ## How to find
 ``` bash
-python find.py <replace_with_your_searchstring> # can be regeex  
+python find.py <replace_with_your_searchstring> # can be regex  
 ```
 

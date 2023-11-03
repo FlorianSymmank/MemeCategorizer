@@ -1,7 +1,8 @@
 import os
 import re
 
-from PIL import Image
+from PIL import Image, ImageOps, ImageStat
+from persistance import load_data, save_data
 
 import config
 
@@ -22,11 +23,15 @@ for file in files:
     # new filename
     filename, file_extension = os.path.splitext(file)
     tiff = os.path.join(config.processed_meme_dir, filename) + ".tiff"
+    tiff_padded = os.path.join(config.processed_meme_dir, "padded", filename) + ".tiff"
 
     # convert
     path = os.path.join(config.meme_dir, file)
-    im = Image.open(path)
-    im.save(tiff, 'TIFF')
+    with Image.open(path) as im:
+        if im.mode != "RGB":
+            im = im.convert("RGB")
+
+        im.save(tiff, 'TIFF')
 
     # feedback
     if (f_count/f_len >= next_info):
