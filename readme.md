@@ -14,6 +14,8 @@ tesseract_cmd = "tesseract.exe" # tesseract executable
 
 ``` bash
 python preprocess_images.py
+python average_color.py
+python pad.py
 python text_extraction.py
 python image_classifier.py
 python object_detection.py
@@ -24,3 +26,11 @@ python object_detection.py
 python find.py <replace_with_your_searchstring> # can be regex  
 ```
 
+## How to composit image
+Find small image to recreate (100x100 is fine).  
+Extract all data.  
+In `composit_meme.py` change line 41 to new source.  
+
+``` bash
+python composit_meme.py
+``` 
