@@ -24,9 +24,9 @@ def main():
         tiff_padded_mean = os.path.join(config.padded_meme_dir, f"mean_{file}")
         tiff_padded = os.path.join(config.padded_meme_dir, f"median_{file}")
 
-        size = (400, 400)
+        size = (300, 300)
         with Image.open(path) as im:
-            # ImageOps.pad(im, size, color=RGB_to_HEX(data["mean_color"])).save(tiff_padded_mean)
+            ImageOps.pad(im, size, color=RGB_to_HEX(data["mean_color"])).save(tiff_padded_mean)
             # median colors looks better
             ImageOps.pad(im, size, color=RGB_to_HEX(data["median_color"])).save(tiff_padded)
                                                                               
