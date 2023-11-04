@@ -6,6 +6,9 @@ config.py
 found
 original/*
 padded/*
+*.png
+*.jpg
+*.xyz
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
